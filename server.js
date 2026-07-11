@@ -5,6 +5,8 @@ const mongoose = require('mongoose')
 
 const app = express()
 
+app.use(express.static('public'));
+
 // connect us to mongodb using connection string in .env
 mongoose.connect(process.env.MONGODB_URI)
 mongoose.connection.on('connected' , () => {
