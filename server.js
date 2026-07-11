@@ -19,6 +19,12 @@ app.get('/' , async (req , res) => {
 
 })
 
+app.get('/new' , async (req , res) =>
+    
+    res.render('New.ejs')
+
+)
+
 app.listen(3000 , () => {
     console.log('listining on port 3000!!!')
 })
