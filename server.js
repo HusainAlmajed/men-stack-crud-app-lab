@@ -19,7 +19,7 @@ app.get('/' , async (req , res) => {
 
 })
 
-app.get('/new' , async (req , res) =>
+app.get('/workouts/new' , async (req , res) =>
     
     res.render('New.ejs')
 
