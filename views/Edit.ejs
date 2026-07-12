@@ -1,0 +1,41 @@
+<%- include('./partials/nav') %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Workout</title>
+</head>
+<body>
+
+    <h1>Edit <%= foundWorkout.name %></h1>
+
+    <form action="/workouts/<%= foundWorkout._id %>?_method=PUT" method="POST">
+
+        <label for="name">Workout Name:</label>
+        <input type="text" id="name" name="name" value="<%= foundWorkout.name %>" />
+
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" value="<%= foundWorkout.description %>" />
+
+        <label for="workoutType">Workout Type:</label>
+        <input type="text" id="workoutType" name="workoutType" value="<%= foundWorkout.workoutType %>" />
+
+        <label for="weight">Weight:</label>
+        <input type="number" id="weight" name="weight" value="<%= foundWorkout.weight %>" />
+
+        <label class="checkboxLabel" for="completed">
+        Completed:
+        <% if (foundWorkout.completed === true) { %>
+        <input type="checkbox" id="completed" name="completed" checked />
+        <% } else { %>
+        <input type="checkbox" id="completed" name="completed" />
+        <% } %>
+</label>
+
+        <button type="submit">Update Workout</button>
+    </form>
+
+</body>
+</html>

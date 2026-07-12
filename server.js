@@ -82,6 +82,29 @@ app.delete('/workouts/:workoutId' , async (req , res) => {
 
 })
 
+app.get('/workouts/:workoutId/edit' , async (req , res) => {
+
+    let foundWorkout = await Workout.findById(req.params.workoutId)
+    res.render('Edit.ejs' , {
+        foundWorkout: foundWorkout
+    })
+
+})
+
+app.put('/workouts/:workoutId' , async (req , res) => {
+
+    const workoutData = {}
+    workoutData.name = req.body.name
+
+    if (req.body.completed === 'on') workoutData.completed = true
+    else workoutData.completed = false
+
+    let updatedWorkout = await Workout.findByIdAndUpdate(req.params.workoutId , workoutData , {new: true})
+
+    res.redirect(`/workouts/${req.params.workoutId}`)
+
+})
+
 app.listen(3000 , () => {
     console.log('listining on port 3000!!!')
 })
