@@ -3,7 +3,7 @@ const express = require('express')
 const morgan = require('morgan')
 const mongoose = require('mongoose')
 const path = require('path')
-
+const methodOverride = require("method-override"); // new
 
 const app = express()
 
@@ -20,6 +20,7 @@ const Workout = require('./models/Workouts.js')
 app.use(express.urlencoded({ extended: false }))
 app.use(morgan('dev'))
 app.use(express.static(path.join(__dirname, "public")))
+app.use(methodOverride("_method")); // new
 
 // creating the home page
 app.get('/' , async (req , res) => {
@@ -74,6 +75,12 @@ app.get('/workouts/:workoutId' , async (req , res) => {
 
 })
 
+app.delete('/workouts/:workoutId' , async (req , res) => {
+
+    await Workout.findByIdAndDelete(req.params.workoutId)
+    res.redirect('/workouts')
+
+})
 
 app.listen(3000 , () => {
     console.log('listining on port 3000!!!')

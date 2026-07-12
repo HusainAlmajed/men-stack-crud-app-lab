@@ -13,5 +13,10 @@
         <p>This Workout is Completed!</p> <% } else { %>
         <p>This Workout is Not Completed!</p> 
     <% } %>
+
+<form action="/workouts/<%=foundWorkout._id%>?_method=DELETE" method="POST">
+  <button type="submit">Delete <%= foundWorkout.name %></button>
+</form>
+
 </body>
 </html>
