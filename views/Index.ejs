@@ -1,0 +1,11 @@
+<%- include('./partials/nav') %>
+
+<h1>All workouts</h1>
+
+<ul>
+    <% allWorkouts.forEach((workout) => { %>
+        <a href="/workouts/<%= workout._id %>">
+            <li><%= workout.name %></li>
+        </a>
+    <% }) %>
+</ul>

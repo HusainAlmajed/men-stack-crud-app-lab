@@ -1,0 +1,17 @@
+<%- include('./partials/nav') %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= foundWorkout.name %></title>
+</head>
+<body>
+    <h1><%= foundWorkout.name %></h1>
+    <% if (foundWorkout.completed) { %> 
+        <p>This Workout is Completed!</p> <% } else { %>
+        <p>This Workout is Not Completed!</p> 
+    <% } %>
+</body>
+</html>

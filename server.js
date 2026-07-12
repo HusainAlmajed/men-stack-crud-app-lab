@@ -50,6 +50,31 @@ app.post('/workouts' , async (req , res) => {
 
 })
 
+// Workout index route
+app.get('/workouts' , async (req , res) => {
+    
+    // to save all the workouts in a variable
+    const allWorkouts = await Workout.find()
+    // console.log(allWorkouts)
+    res.render('Index.ejs' , {
+        allWorkouts: allWorkouts
+    })
+
+})
+
+app.get('/workouts/:workoutId' , async (req , res) => {
+
+    const foundWorkout = await Workout.findById(req.params.workoutId)
+    // res.send(`This route renders the show page for fruit id: ${req.params.workoutId}`)
+    // res.send(foundWorkout)
+
+    res.render('Show.ejs' , {
+        foundWorkout: foundWorkout
+    })
+
+})
+
+
 app.listen(3000 , () => {
     console.log('listining on port 3000!!!')
 })
